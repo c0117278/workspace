@@ -24,7 +24,7 @@ private:
 
 public:
   Needle(int l){
-    this->l = l;
+    this->l = (double)l;
     o = 0;
     theta = 0.0;
     dist = 0.0;
@@ -32,13 +32,13 @@ public:
   }
 
   bool drop_needle(double d){
-    uniform_real_distribution<> range_o(0, d / 2);
-    uniform_real_distribution<> range_t(0, pi / 2);
+    uniform_real_distribution<> range_o(0, d / 2.0);
+    uniform_real_distribution<> range_t(0, pi / 2.0);
 
     o = range_o(engine);
     theta = range_t(engine);
 
-    dist_needle = (l / 2) * sin(theta);
+    dist_needle = (l / 2.0) * sin(theta);
 
     if(o <= dist_needle){
       return true;
